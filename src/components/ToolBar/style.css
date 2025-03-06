@@ -9,3 +9,8 @@
     display: flex;
     gap: 6px;
 }
+
+.button-trash:hover {
+    border-color: #ff2c2c;
+    color: #ff2c2c;
+}

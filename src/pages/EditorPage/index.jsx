@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom"
+import { useState } from "react"
 
 import ToolBar from "../../components/ToolBar"
 import CanvasEditor from "../../components/CanvasEditor"
@@ -6,14 +6,15 @@ import CanvasEditor from "../../components/CanvasEditor"
 import "./style.css"
 
 function EditorPage() {
+    const [canvas, setCanvas] = useState(null)
+    const [isDrawing, setIsDrawing] = useState(false)
     
-
     return (
         <div>
             <h2>Edite a figurinha</h2>
             <div className="editor-container">
-                <ToolBar />
-                <CanvasEditor  />
+                <ToolBar canvas={canvas} setIsDrawing={setIsDrawing} />
+                <CanvasEditor setCanvas={setCanvas} isDrawing={isDrawing} />
             </div>
 
 
