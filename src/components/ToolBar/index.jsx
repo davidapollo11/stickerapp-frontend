@@ -24,12 +24,23 @@ function ToolBar({ canvas, setIsDrawing }) {
     const toggleDrawingMode = () => {
         setIsDrawing((prev) => !prev)
     }
+
+    const removeItem = () => {
+        if (canvas) {
+            const activeObjects = canvas.getActiveObjects()
+            if (activeObjects.length) {
+                activeObjects.forEach(obj => canvas.remove(obj))
+                canvas.discardActiveObject()
+                canvas.renderAll()
+            }
+        }
+    }
     return (
         <div className="toolbar">
             <div className="tools">
                 <button onClick={addText}><FiType /></button>
                 <button onClick={toggleDrawingMode}><FiEdit2 /></button>
-                <button className="button-trash"><FiTrash2 /></button>
+                <button className="button-trash" onClick={removeItem} ><FiTrash2 /></button>
             </div>
             <button><FiSave className="symbol"/>Salvar</button>
         </div>
